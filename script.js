@@ -83,4 +83,22 @@ window.addEventListener("load", function() {
             }
       event.preventDefault();
       });
+      
+      // fetch & display planet info
+      fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+         response.json().then(function(json) {
+            let planet = json[Math.floor(Math.random() * json.length)];
+            document.getElementById("missionTarget").innerHTML = `
+            <h2>Mission Destination</h2>
+            <ol>
+               <li>Name: ${planet.name}</li>
+               <li>Diameter: ${planet.diameter}</li>
+               <li>Star: ${planet.star}</li>
+               <li>Distance from Earth: ${planet.distance}</li>
+               <li>Number of Moons: ${planet.moons}</li>
+            </ol>
+            <img src="${planet.image}">
+            `;
+         });
+      });
 });
