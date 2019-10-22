@@ -30,16 +30,9 @@ window.addEventListener("load", function() {
         performChecks()
       }
       function performChecks() {
-      // set pilotStatus to display pilot name
-      //if ((pilotName.value.match(/^[A-Za-z]+$/))) {
+      // set pilotStatus and copilotStatus to display pilot and copilot names
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName.value} ready.`;
-         document.getElementById("pilotStatus").style.removeProperty("color");
-      //}
-      // set copilotStatus to display copilot name
-      //if ((copilotName.value.match(/^[A-Za-z]+$/))) {
          document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName.value} ready.`;
-         document.getElementById("copilotStatus").style.removeProperty("color");
-      //}
       // check fuel level
       if (fuelLevel.value < 10000 && fuelLevel.value > 0) {
          faultyItems.style.visibility = "visible";
