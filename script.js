@@ -15,32 +15,24 @@ window.addEventListener("load", function() {
      if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoWeight.value === "") {
       alert("All fields are required!");
       shuttleIsReady = -1; // Awaiting Information Before Launch
-      // check for numeric input in pilot & co-pilot fields
+      // check for numeric input in pilot and co-pilot fields
       } else if (!(pilotName.value.match(/^[A-Za-z]+$/)) || !(copilotName.value.match(/^[A-Za-z]+$/))) {
-        alert("Pilot & co-pilot names must be strings!");
-      // check for non numeric input in fuel level & cargo weight fields
+        alert("Make sure to enter valid information for each field! (pilot and co-pilot names must be strings.)");
+      // check for non numeric input in fuel level and cargo weight fields
       } else if (isNaN(fuelLevel.value) || isNaN(cargoWeight.value)) {
-        alert("fuel level & cargo weight values must be numbers!");
+        alert("Make sure to enter valid information for each field! (fuel level and cargo weight values must be numbers.)");
       } else {
         performChecks()
       }
       function performChecks() {
-      // set pilotStatus to reflect whether or not there is a valid pilot
-      if (!(pilotName.value.match(/^[A-Za-z]+$/)) || pilotName.value === "") {
-         document.getElementById("pilotStatus").style.color = "red";
-         document.getElementById("pilotStatus").innerHTML = "Pilot not ready.";
-         pilotsReady = false;
-      } else {
+      // set pilotStatus to display pilot name
+      if ((pilotName.value.match(/^[A-Za-z]+$/))) {
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName.value} ready.`;
          document.getElementById("pilotStatus").style.removeProperty("color");
          pilotsReady = true;
       }
-      // set copilotStatus to reflect whether or not there is a valid co-pilot
-      if (!(copilotName.value.match(/^[A-Za-z]+$/)) || copilotName.value === "") {
-         document.getElementById("copilotStatus").style.color = "red";
-         document.getElementById("copilotStatus").innerHTML = "Co-pilot not ready.";
-         pilotsReady = false;
-      } else {
+      // set copilotStatus to display copilot name
+      if ((copilotName.value.match(/^[A-Za-z]+$/))) {
          document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName.value} ready.`;
          document.getElementById("copilotStatus").style.removeProperty("color");
       }
@@ -83,7 +75,6 @@ window.addEventListener("load", function() {
             }
       event.preventDefault();
       });
-      
       // fetch & display planet info
       fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
          response.json().then(function(json) {
