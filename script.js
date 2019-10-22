@@ -15,6 +15,11 @@ window.addEventListener("load", function() {
      if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoWeight.value === "") {
       alert("All fields are required!");
       shuttleIsReady = -1; // Awaiting Information Before Launch
+      /* shuttleIsReady is kinda like a Boolean with 3 values:
+      	* -1: neutral
+      	* 0: false
+      	*1: true
+      	*/
       // check for numeric input in pilot and co-pilot fields
       } else if (!(pilotName.value.match(/^[A-Za-z]+$/)) || !(copilotName.value.match(/^[A-Za-z]+$/))) {
         alert("Make sure to enter valid information for each field! (pilot and co-pilot names must be strings.)");
@@ -26,16 +31,15 @@ window.addEventListener("load", function() {
       }
       function performChecks() {
       // set pilotStatus to display pilot name
-      if ((pilotName.value.match(/^[A-Za-z]+$/))) {
+      //if ((pilotName.value.match(/^[A-Za-z]+$/))) {
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName.value} ready.`;
          document.getElementById("pilotStatus").style.removeProperty("color");
-         pilotsReady = true;
-      }
+      //}
       // set copilotStatus to display copilot name
-      if ((copilotName.value.match(/^[A-Za-z]+$/))) {
+      //if ((copilotName.value.match(/^[A-Za-z]+$/))) {
          document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilotName.value} ready.`;
          document.getElementById("copilotStatus").style.removeProperty("color");
-      }
+      //}
       // check fuel level
       if (fuelLevel.value < 10000 && fuelLevel.value > 0) {
          faultyItems.style.visibility = "visible";
